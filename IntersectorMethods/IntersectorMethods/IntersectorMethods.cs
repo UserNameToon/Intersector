@@ -15,10 +15,10 @@ namespace IntersectorMethods
         //              name.
         // Returns :    Nothing.    (Maybe this should be boolean to catch success of write?)
         // **********************************************************************************
+        // Cleaned up code and changed names to make it easier to combine things later. - Jonathan
         public static void WriteToFile(List<float> lst, string filename)
         {
             StreamWriter swOutFile;
-
             try
             {
                 swOutFile = new StreamWriter(filename, false);
