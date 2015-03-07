@@ -10,7 +10,7 @@ namespace IntersectorMethods
     public class IntersectorMethods
     {
         // **********************************************************************************
-        // Method  :    public static void WriteToFile(List<float> lst, string name, int x)
+        // Method  :    public static void WriteToFile(List<float> lst, string filename)
         // Purpose :    Writes a given list to a file given a string for generating the file-
         //              name.
         // Returns :    Nothing.    (Maybe this should be boolean to catch success of write?)
