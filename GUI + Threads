@@ -1,0 +1,73 @@
+        private Thread MakeUnique_Thread = null;
+        private Thread Intersect_Thread = null; 
+        private Thread Sorting_Thread = null;
+        
+        private void UI_Button_Click(object sender, EventArgs e)
+        {
+            bool success = false;
+            
+            List<float> temp1 = new List<float>();
+            List<float> temp2 = new List<float>();
+            List<List<float>> listTemp = new List<List<float>>((int)UI_Generate_List.Value);
+            
+            success = Error();
+            if (success)
+            {
+                
+                Sorting_Thread = new Thread(BubbleSort);
+                Sorting_Thread.IsBackground = true;
+                Sorting_Thread.Start(listTemp);
+                
+                MakeUnique_Thread = new Thread(MakeUniqueList);
+                MakeUnique_Thread.IsBackground = true;
+                MakeUnique_Thread.Start(listTemp);
+
+                Intersect_Thread = new Thread(delegate(){IntersectList(temp1,temp2);});
+                Intersect_Thread.IsBackground = true;
+                Intersect_Thread.Start(); 
+            }
+        }
+        
+        private void BubbleSort(object passInList<List<float>>)
+        {
+            if (!(number is List<List<float>>))
+                return;
+                //cast passInList<List<float>> as List<List<float>>
+                //do somthing here
+        }
+
+        private void IntersectList(object X, object Y)
+        {
+            if (!((X is List<float>) && (Y is List<float>))) //making sure that we sending list<float>
+                return;
+                //cast X and Y as  List<float>
+                //do something here
+        }
+
+        private void MakeUniqueList(object uniqueList)
+        {
+            if (!(uniqueList is List<float>))
+                return;
+                //cast uniqueList as List<float>
+                //do something here
+        }
+        
+        private bool Error()       //Error message for the programs 
+        {
+            bool success = false;
+            if (UI_Generate_Length.Value <= 0)
+            {
+                MessageBox.Show("Please enter the value you wish to generate");
+            }
+            else if (UI_Generate_List.Value <= 0)
+            {
+                MessageBox.Show("Please enter the amount of list you wish to creates");
+            }
+            else
+            {
+                success = true;
+            }
+            return success;
+        }
+    }
+}
